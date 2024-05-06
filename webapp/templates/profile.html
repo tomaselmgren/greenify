@@ -1,0 +1,21 @@
+<!-- profile.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+</head>
+<body>
+    <h2>Profile</h2>
+    <p>Username: {{ user.username }}</p>
+    <p>Email: {{ user.email }}</p>
+    <h3>Buildings:</h3>
+    <h3>Buildings:</h3>
+    <ul>
+        {% for building in user_buildings %}
+            <li><a href="{% url 'building_profile' building.id %}">{{ building.name_of_asset }}</a></li>
+            <!-- Display other building details -->
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_building' %}">Add Building</a>
+</body>
+</html>

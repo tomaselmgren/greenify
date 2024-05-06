@@ -1,0 +1,15 @@
+<!-- add_building.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Building</title>
+</head>
+<body>
+    <h2>Add Building</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Building</button>
+    </form>
+</body>
+</html>

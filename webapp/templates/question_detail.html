@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ question.prompt }}</title>
+</head>
+<body>
+    <h1>{{ question.prompt }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {% for choice in choices %}
+        <input type="radio" name="choice" id="choice{{ choice.id }}" value="{{ choice.id }}">
+        <label for="choice{{ choice.id }}">{{ choice.text }}</label><br>
+        {% endfor %}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
