@@ -1,13 +1,24 @@
 /* Basic Reset */
-body, h1, h2, h3, p, ul {
+body, h1, h2, h3, p, ul, li {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
 }
 
+/* Body styling for overall page */
+body {
+    line-height: 1.6;
+    font-size: 16px;
+    background-color: #f8f9fa; /* light grey background */
+    color: #333; /* dark grey text */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* full height to support footer placement */
+}
+
 /* Header styling */
 header {
-    background-color: #007BFF; /* Bootstrap primary blue */
+    background-color: #37c114; 
     color: white;
     padding: 10px 20px;
     text-align: center;
@@ -21,6 +32,7 @@ header h1 {
 nav ul {
     list-style: none;
     padding: 0;
+    text-align: center;
 }
 
 nav ul li {
@@ -38,13 +50,48 @@ nav a:hover {
     text-decoration: underline;
 }
 
-/* Main content styling */
-body {
+/* Styling for main content area */
+main {
+    display: flex;
+    flex-direction: column; /* Stacks children elements vertically */
+    align-items: center; /* Centers children horizontally */
+    justify-content: flex-start; /* Aligns children to the top */
+    width: 100%;
+    max-width: 600px; /* Sets a max width for the content area */
+    margin: 0 auto; /* Centers the main tag within the body */
     padding: 20px;
-    line-height: 1.6;
+    box-sizing: border-box; /* Includes padding in width calculation */
+}
+
+/* Spacing for elements within main for better readability */
+main h2, main p, main ul, main a {
+    width: 100%; /* Ensures full width within the container */
+    margin-bottom: 20px; /* Adds vertical spacing between elements */
+}
+
+/* Form styling for aesthetic improvements */
+form {
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background: white;
+    border-radius: 5px;
+    width: fit-content;  /* Ensure the form does not stretch */
+}
+
+/* Enhance the button appearance */
+button {
+    background-color: #37c114; /* Matching header color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
     font-size: 16px;
-    background-color: #f8f9fa; /* light grey background */
-    color: #333; /* dark grey text */
+}
+
+button:hover {
+    background-color: #2a8f0b; /* Darker shade for hover effect */
 }
 
 /* Footer styling */
@@ -53,12 +100,22 @@ footer {
     padding: 20px 10px;
     background-color: #343a40; /* Bootstrap dark */
     color: white;
-    position: absolute;
-    width: 100%;
-    bottom: 0;
 }
 
-/* Add some space at the bottom of the content to avoid overlap with the footer */
-body {
-    margin-bottom: 60px;
+/* Make the logout button look like a link */
+button.as-link {
+    background: none;
+    color: white; /* Assuming your nav links are also white */
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    display: inline;
+    text-decoration: underline;
+    font-size: inherit; /* Ensure it matches other nav links */
+}
+
+button.as-link:hover {
+    text-decoration: none;
+    color: #ccc; /* Light grey for hover, adjust based on your theme */
 }

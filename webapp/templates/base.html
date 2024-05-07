@@ -1,12 +1,11 @@
-<!-- templates/base.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
-    <title>{% block title %}My Site{% endblock %}</title>
-    <link rel="stylesheet" href="{% static '/styles.css' %}">
+    <title>{% block title %}Greenify{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <body>
     <header>
@@ -14,15 +13,26 @@
         <nav>
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/login/">Login</a></li>
-                <li><a href="/register/">Register</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                    <!-- Logout måste vara en POST request -->
+                    <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="as-link">Logout</button>
+                    </form>                    
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>
 
-    {% block content %}
-    <!-- Content goes here -->
-    {% endblock %}
+    <main>
+        {% block content %}
+        <!-- Content goes here -->
+        {% endblock %}
+    </main>    
 
     <footer>
         <p>Copyright &copy; 2024 Greenify</p>

@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ question.prompt }}</title>
-</head>
-<body>
-    <h1>{{ question.prompt }}</h1>
+{% extends "base.html" %}
+
+{% block title %}{{ building.name_of_asset }} - Greenify{% endblock %}
+
+{% block content %}
+<h1>{{ question.prompt }}</h1>
     <form method="post">
         {% csrf_token %}
         {% for choice in choices %}
@@ -13,5 +12,4 @@
         {% endfor %}
         <button type="submit">Submit</button>
     </form>
-</body>
-</html>
+{% endblock %}

@@ -1,15 +1,12 @@
-<!-- add_building.html -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Add Building</title>
-</head>
-<body>
-    <h2>Add Building</h2>
+{% extends "base.html" %}
+
+{% block title %}{{ building.name_of_asset }} - Greenify{% endblock %}
+
+{% block content %}
+<h2>Add Building</h2>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Add Building</button>
     </form>
-</body>
-</html>
+{% endblock %}

@@ -1,21 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Building Detail - {{ building.name_of_asset }}</title>
-</head>
-<body>
-    <h2>{{ building.name_of_asset }}</h2>
-    <p>Full Address: {{ building.full_asset_address }}</p>
-    <p>Address Line 1: {{ building.address_line1 }}</p>
-    <p>Postcode/Zip Code: {{ building.postcode_zip_code }}</p>
-    <p>Town/City: {{ building.town_city }}</p>
-    <p>Country: {{ building.country }}</p>
+{% extends "base.html" %}
 
-    <h3>Categories:</h3>
-    <ul>
-        {% for category in categories %}
-        <li><a href="{% url 'category_detail' building.id category.id %}">{{ category.name }}</a> - Score: {{ category.total_score|default_if_none:"No score" }}</li>
-    {% endfor %}
-    </ul>
-</body>
-</html>
+{% block title %}{{ building.name_of_asset }} - Greenify{% endblock %}
+
+{% block content %}
+<h2>{{ building.name_of_asset }}</h2>
+<p>Full Address: {{ building.full_asset_address }}</p>
+<p>Address Line 1: {{ building.address_line1 }}</p>
+<p>Postcode/Zip Code: {{ building.postcode_zip_code }}</p>
+<p>Town/City: {{ building.town_city }}</p>
+<p>Country: {{ building.country }}</p>
+
+<h3>Categories:</h3>
+<ul>
+    {% for category in categories %}
+    <li><a href="{% url 'category_detail' building.id category.id %}">{{ category.name }}</a> - Score: {{ category.total_score|default_if_none:"No score" }}</li>
+{% endfor %}
+</ul>
+{% endblock %}

@@ -64,7 +64,6 @@ def building_profile(request, building_id):
 
 
 @login_required
-
 def category_detail(request, building_id, category_id):
     building = get_object_or_404(Building, id=building_id)
     category = get_object_or_404(Category, id=category_id)
@@ -100,7 +99,7 @@ def question_detail(request, building_id, category_id, question_code):
                 question=question,
                 defaults={'choice': choice}
             )
-            return redirect('profile')  # Redirecting to the building profile or another appropriate view
+            return redirect('category_detail', building_id=building_id, category_id=category_id)  # Redirecting to the building profile or another appropriate view
 
     return render(request, 'question_detail.html', {
         'building': building,

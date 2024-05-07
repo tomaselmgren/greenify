@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ category.name }}</title>
-</head>
-<body>
-    <h2>Questions in {{ category.name }}</h2>
+{% extends "base.html" %}
+
+{% block title %}{{ building.name_of_asset }} - Greenify{% endblock %}
+
+{% block content %}
+<h2>Questions in {{ category.name }}</h2>
     <ul>
         {% for question in questions %}
             {% if question.id in answered_questions_ids %}
@@ -15,5 +14,4 @@
         {% endfor %}
     </ul>
     <a href="{% url 'building_profile' building.id %}">Back to Building</a>
-</body>
-</html>
+{% endblock %}
